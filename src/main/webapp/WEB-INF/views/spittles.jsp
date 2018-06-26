@@ -22,7 +22,7 @@
       <h1>Recent Spittles</h1>
       <ul class="spittleList">
         <c:forEach items="${spittleList}" var="spittle" >
-          <li id="spittle_<c:out value="spittle.id"/>">
+          <li id="spittle_<c:out value="${spittle.id}"/>">
             <div class="spittleMessage"><c:out value="${spittle.message}" /></div>
             <div>
               <span class="spittleTime"><c:out value="${spittle.time}" /></span>

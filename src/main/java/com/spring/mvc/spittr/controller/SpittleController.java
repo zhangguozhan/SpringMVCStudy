@@ -29,18 +29,39 @@ public class SpittleController {
 		this.spittleRepository = spittleRepository;
 	}
 
+	/**
+	 * "/spittles"GET请求
+	 * @param max
+	 * @param count
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Spittle> spittles(@RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) long max,
-			@RequestParam(value = "count", defaultValue = "20") int count) {
+	public List<Spittle> spittles(
+				@RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) long max,
+				@RequestParam(value = "count", defaultValue = "20") int count) {
 		return spittleRepository.findSpittles(max, count);
 	}
 
+	/**
+	 * "/spittles/2" 将参数放在请求路径的GET请求
+	 * @param spittleId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
 	public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
 		model.addAttribute(spittleRepository.findOne(spittleId));
 		return "spittle";
 	}
 
+	
+	/**
+	 *"/spittles"表单提交POST请求
+	 * @param form
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public String saveSpittle(SpittleForm form, Model model) throws Exception {
 		spittleRepository.save(new Spittle(null, form.getMessage(), new Date(), form.getLongitude(), form.getLatitude()));
