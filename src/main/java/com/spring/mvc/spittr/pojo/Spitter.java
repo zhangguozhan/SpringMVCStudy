@@ -5,7 +5,6 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.validator.constraints.Email;
 
 public class Spitter {
 
@@ -28,7 +27,6 @@ public class Spitter {
   private String lastName;
   
   @NotNull
-  @Email
   private String email;
 
   public Spitter() {}
