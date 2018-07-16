@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.spring.mvc.ScanFlag;
@@ -14,7 +14,7 @@ import com.spring.mvc.ScanFlag;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackageClasses={ScanFlag.class})
-public class WebConfig extends WebMvcConfigurerAdapter{
+public class WebConfig implements WebMvcConfigurer{
 	
 	public WebConfig() {
 		System.out.println("==========================WebConfig create============================");
